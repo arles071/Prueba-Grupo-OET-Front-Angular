@@ -19,7 +19,7 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                             <div class="col-md-6">
                                 <label for="driverIdentificationNumber">Número de cédula</label>
                                 <input type="text" (blur)="onInputBlur($event, 'driver')" 
-                                maxlength="12"
+                                maxlength="10"
                                 class="form-control" id="driverIdentificationNumber" formControlName="identification_number" />
                                 <div *ngIf="formulario.controls['identification_number'].invalid && (formulario.controls['identification_number'].dirty || formulario.controls['identification_number'].touched)">
                                 El número de cédula del conductor es obligatorio.
@@ -66,10 +66,11 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                             <div class="col-md-6">
                                 <label for="driverPhone">Teléfono</label>
                                 <input type="text" class="form-control" id="driverPhone" 
-                                maxlength="12"
+                                maxlength="10"
+                                minlength="10"
                                 formControlName="phone" />
                                 <div *ngIf="formulario.controls['phone'].invalid && (formulario.controls['phone'].dirty || formulario.controls['phone'].touched)">
-                                El teléfono del conductor es obligatorio.
+                                El teléfono del conductor es obligatorio o debe de tener como minimo 10 caracteres y maximo 10 caracteres.
                                 </div>
                             </div>
                         

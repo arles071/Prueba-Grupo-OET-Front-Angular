@@ -14,6 +14,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Requisitos
+Se describe a continuación la versión de angular y node.js que se realizo el el frontend
+* Versión angular 16.1.0
+* Versión node v20.9.0
+
 ## Repositorio de backent laravel
 https://github.com/arles071/Prueba-Grupo-OET.git
 
@@ -21,8 +26,8 @@ https://github.com/arles071/Prueba-Grupo-OET.git
 Descargar el proyecto de angular e ingresar a la raiz del proyecto, una vez en 
 esta ruta ejecutar los siguientes comandos:
 
-npm install  => Este comando instala todas las dependencias de angular
-ng serve => inicializa el proyecto de angular en la ruta localhost:4200
+* npm install  => Este comando instala todas las dependencias de angular
+* ng serve => inicializa el proyecto de angular en la ruta localhost:4200
 
 ## Nota:
 Revisar el archivo "resources\angular\src\environments\environment.ts" que este apuntando bien a la ruta del backend
@@ -32,7 +37,7 @@ De acuerdo al requerimiento de registro de vehículos se realizo un formulario p
 
 Tambien se habilito una ruta de nombre personas donde solamente se peude editar la persona.
 
-## Paso en angular
+## Pasos en angular
 * En este proyecto destaco el uso de interceptor para enviar el toque por cabecera y realizar un efecto de carga por cada petición.
 * Para la creación de vehículos y personas se utiliza un modal de bootstrap al cual se le pasa información desde el componente padre al componente que se encarga de abrir el modal y de la misma manera el componente padre esta a la escucha para detectar cuando el modal se cierra. Este modal fue reutilizado para crear y actualizar un vehículo.
 * Se realizo un login

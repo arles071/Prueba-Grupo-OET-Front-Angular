@@ -78,7 +78,7 @@ export class VehicleComponent implements OnInit {
     Swal.fire('Hello world!');
     Swal.fire({
       title: "Eliminar",
-      text: "¿Esta seguro de eliminar este vehiculo?",
+      text: "¿Esta seguro de eliminar este vehículo?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -92,7 +92,7 @@ export class VehicleComponent implements OnInit {
             this.loadTable();
             Swal.fire({
               title: "Eliminado!",
-              text: "Vehiculo eliminado con exito.",
+              text: "Vehículo eliminado con exito.",
               icon: "success"
             });
           }

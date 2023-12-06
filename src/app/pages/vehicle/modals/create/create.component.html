@@ -21,7 +21,7 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="plate">Placa</label>
-                                        <input type="text" class="form-control" id="plate" formControlName="plate" maxlength="12"/>
+                                        <input type="text" class="form-control" id="plate" formControlName="plate" maxlength="6"/>
                                         <div 
                                         *ngIf="formulario.controls['plate'].invalid && (formulario.controls['plate'].dirty || formulario.controls['plate'].touched)">
                                             La placa es obligatoria.
@@ -70,7 +70,7 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                                     <div class="col-md-6">
                                         <label for="driverIdentificationNumber">Número de cédula</label>
                                         <input type="text" (blur)="onInputBlur($event, 'driver')" 
-                                        maxlength="12"
+                                        maxlength="10"
                                         class="form-control" id="driverIdentificationNumber" formControlName="identification_number" />
                                         <div *ngIf="formulario.controls['driver'].get('identification_number')?.invalid && (formulario.controls['driver'].get('identification_number')?.dirty || formulario.controls['driver'].get('identification_number')?.touched)">
                                         El número de cédula del conductor es obligatorio.
@@ -117,10 +117,11 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                                     <div class="col-md-6">
                                         <label for="driverPhone">Teléfono</label>
                                         <input type="text" class="form-control" id="driverPhone" 
-                                        maxlength="12"
+                                        maxlength="10"
+                                        minlength="10"
                                         formControlName="phone" />
                                         <div *ngIf="formulario.controls['driver'].get('phone')?.invalid && (formulario.controls['driver'].get('phone')?.dirty || formulario.controls['driver'].get('phone')?.touched)">
-                                        El teléfono del conductor es obligatorio.
+                                        El teléfono del conductor es obligatorio o debe de tener como minimo 10 caracteres y maximo 10 caracteres
                                         </div>
                                     </div>
                                 
@@ -149,7 +150,7 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                                     <div class="col-md-6">
                                         <label for="ownerIdentificationNumber">Número de cédula</label>
                                         <input type="text" (blur)="onInputBlur($event, 'owner')" 
-                                        maxlength="12"
+                                        maxlength="10"
                                         class="form-control" id="ownerIdentificationNumber" 
                                         formControlName="identification_number" />
                                         <div *ngIf="formulario.controls['owner'].get('identification_number')?.invalid && (formulario.controls['owner'].get('identification_number')?.dirty || formulario.controls['owner'].get('identification_number')?.touched)">
@@ -171,7 +172,7 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                                         <label for="ownerSecondName">Segundo Nombre</label>
                                         <input type="text" class="form-control" id="ownerSecondName"
                                         maxlength="50" 
-                                        ormControlName="middle_name" />
+                                        formControlName="middle_name" />
                                     </div>
                                 
                                     <div class="col-md-6">
@@ -197,10 +198,11 @@ id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=
                                     <div class="col-md-6">
                                         <label for="ownerPhone">Teléfono</label>
                                         <input type="text" class="form-control" id="ownerPhone" 
-                                        maxlength="12"
+                                        maxlength="10"
+                                        minlength="10"
                                         formControlName="phone" />
                                         <div *ngIf="formulario.controls['owner'].get('phone')?.invalid && (formulario.controls['owner'].get('phone')?.dirty || formulario.controls['owner'].get('phone')?.touched)">
-                                            El teléfono del propietario es obligatorio.
+                                            El teléfono del propietario es obligatorio o debe de tener como minimo 10 caracteres y maximo 10 caracteres.
                                         </div>
                                     </div>
                                 
