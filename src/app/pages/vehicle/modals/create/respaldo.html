@@ -1,0 +1,196 @@
+<!-- Modal -->
+<div class="modal fade" 
+[ngClass]="[visible ? 'show' : '']"
+[ngStyle]="{ 'display': visible ? 'block': 'none' }"
+id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Nuevo Vehículo</h1>
+          <button type="button" class="btn-close" (click)="closeModal();"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formulario" (ngSubmit)="guardarDatos()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark-subtle text-light">
+                            Información de Vehiculos
+                            </div>
+                            <div class="card-body bg-body-secondary">
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="placa">Placa</label>
+                                        <input type="text" class="form-control" id="placa" formControlName="placa" />
+                                        <div *ngIf="formulario.get('placa').hasError('required') && formulario.get('placa').touched">
+                                        La placa es obligatoria.
+                                        </div>
+                                    </div>
+                          
+                                    <div class="col-md-6">
+                                        <label for="color">Color</label>
+                                        <input type="text" class="form-control" id="color" formControlName="color" />
+                                        <div *ngIf="formulario.get('color').hasError('required') && formulario.get('color').touched">
+                                        El color es obligatorio.
+                                        </div>
+                                    </div>
+                          
+                                    <div class="col-md-6">
+                                        <label for="marca">Marca</label>
+                                        <input type="text" class="form-control" id="marca" formControlName="marca" />
+                                        <div *ngIf="formulario.get('marca').hasError('required') && formulario.get('marca').touched">
+                                        La marca es obligatoria.
+                                        </div>
+                                    </div>
+                          
+                                    <div class="col-md-6">
+                                        <label for="tipoVehiculo">Tipo de vehiculo</label>
+                                        <input type="text" class="form-control" id="tipoVehiculo" formControlName="tipoVehiculo" />
+                                        <div *ngIf="formulario.get('tipoVehiculo').hasError('required') && formulario.get('tipoVehiculo').touched">
+                                        El tipo de vehiculo es obligatorio.
+                                        </div>
+                                    </div>
+
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <div class="card-header bg-dark-subtle text-light">
+                            Información del Conductor
+                            </div>
+                            <div class="card-body bg-body-secondary">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <label for="numeroCedulaConductor">Número de cédula</label>
+                                      <input type="text" class="form-control" id="numeroCedulaConductor" formControlName="numeroCedulaConductor" />
+                                      <div *ngIf="formulario.get('numeroCedulaConductor').hasError('required') && formulario.get('numeroCedulaConductor').touched">
+                                        El número de cédula del conductor es obligatorio.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="primerNombreConductor">Primer Nombre</label>
+                                      <input type="text" class="form-control" id="primerNombreConductor" formControlName="primerNombreConductor" />
+                                      <div *ngIf="formulario.get('primerNombreConductor').hasError('required') && formulario.get('primerNombreConductor').touched">
+                                        El primer nombre del conductor es obligatorio.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="segundoNombreConductor">Segundo Nombre</label>
+                                      <input type="text" class="form-control" id="segundoNombreConductor" formControlName="segundoNombreConductor" />
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="apellidosConductor">Apellidos</label>
+                                      <input type="text" class="form-control" id="apellidosConductor" formControlName="apellidosConductor" />
+                                      <div *ngIf="formulario.get('apellidosConductor').hasError('required') && formulario.get('apellidosConductor').touched">
+                                        Los apellidos del conductor son obligatorios.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="direccionConductor">Dirección</label>
+                                      <input type="text" class="form-control" id="direccionConductor" formControlName="direccionConductor" />
+                                      <div *ngIf="formulario.get('direccionConductor').hasError('required') && formulario.get('direccionConductor').touched">
+                                        La dirección del conductor es obligatoria.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="telefonoConductor">Télefono</label>
+                                      <input type="text" class="form-control" id="telefonoConductor" formControlName="telefonoConductor" />
+                                      <div *ngIf="formulario.get('telefonoConductor').hasError('required') && formulario.get('telefonoConductor').touched">
+                                        El teléfono del conductor es obligatorio.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="ciudadConductor">Ciudad</label>
+                                      <input type="text" class="form-control" id="ciudadConductor" formControlName="ciudadConductor" />
+                                      <div *ngIf="formulario.get('ciudadConductor').hasError('required') && formulario.get('ciudadConductor').touched">
+                                        La ciudad del conductor es obligatoria.
+                                      </div>
+                                    </div>
+                                </div>
+                           
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <div class="card-header bg-dark-subtle text-light">
+                            Información del propietario
+                            </div>
+                            <div class="card-body bg-body-secondary">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <label for="numeroCedulaPropietario">Número de cédula</label>
+                                      <input type="text" class="form-control" id="numeroCedulaPropietario" formControlName="numeroCedulaPropietario" />
+                                      <div *ngIf="formulario.get('numeroCedulaPropietario').hasError('required') && formulario.get('numeroCedulaPropietario').touched">
+                                        El número de cédula del propietario es obligatorio.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="primerNombrePropietario">Primer Nombre</label>
+                                      <input type="text" class="form-control" id="primerNombrePropietario" formControlName="primerNombrePropietario" />
+                                      <div *ngIf="formulario.get('primerNombrePropietario').hasError('required') && formulario.get('primerNombrePropietario').touched">
+                                        El primer nombre del propietario es obligatorio.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="segundoNombrePropietario">Segundo Nombre</label>
+                                      <input type="text" class="form-control" id="segundoNombrePropietario" formControlName="segundoNombrePropietario" />
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="apellidosPropietario">Apellidos</label>
+                                      <input type="text" class="form-control" id="apellidosPropietario" formControlName="apellidosPropietario" />
+                                      <div *ngIf="formulario.get('apellidosPropietario').hasError('required') && formulario.get('apellidosPropietario').touched">
+                                        Los apellidos del propietario son obligatorios.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="direccionPropietario">Dirección</label>
+                                      <input type="text" class="form-control" id="direccionPropietario" formControlName="direccionPropietario" />
+                                      <div *ngIf="formulario.get('direccionPropietario').hasError('required') && formulario.get('direccionPropietario').touched">
+                                        La dirección del propietario es obligatoria.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="telefonoPropietario">Télefono</label>
+                                      <input type="text" class="form-control" id="telefonoPropietario" formControlName="telefonoPropietario" />
+                                      <div *ngIf="formulario.get('telefonoPropietario').hasError('required') && formulario.get('telefonoPropietario').touched">
+                                        El teléfono del propietario es obligatorio.
+                                      </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                      <label for="ciudadPropietario">Ciudad</label>
+                                      <input type="text" class="form-control" id="ciudadPropietario" formControlName="ciudadPropietario" />
+                                      <div *ngIf="formulario.get('ciudadPropietario').hasError('required') && formulario.get('ciudadPropietario').touched">
+                                        La ciudad del propietario es obligatoria.
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="button" [disabled]="formulario.invalid" class="btn btn-primary btn-lg text-center">Guardar</button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+</div>

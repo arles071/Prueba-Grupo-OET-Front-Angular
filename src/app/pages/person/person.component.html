@@ -1,0 +1,71 @@
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>Información de personas</h2>
+           
+            <button class="btn btn-primary" (click)="createNewPerson();">
+                Crear Nuevo Persona
+            </button>
+            
+            <modal-create-person
+            [visible]="modalCreatePerson"
+            [title]="titleModal"
+            [action]="actionButton"
+            [person]="person"
+            (visibleChange)="modalCreatePersonChange($event)"
+            ></modal-create-person>
+            
+        </div>
+
+        <div class="col-12">
+            <div class="col-md-3 mt-4">
+                <label for="number_document">Buscar por documento</label>
+                <input type="text" id="number_document" class="form-control" (input)="selectChange($event, 'number_document')">
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Documento</th>
+                        <th>Primer nombre</th>
+                        <th>Segundo nombre</th>
+                        <th>Apellidos</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Ciudad</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of tablePerson">
+                        <td>{{ person.id }}</td>
+                        <td>{{ person.identification_number }}</td>
+                        <td>{{ person.first_name }}</td>
+                        <td>{{ person.middle_name }}</td>
+                        <td>{{ person.last_name }}</td>
+                        <td>{{ person.address }}</td>
+                        <td>{{ person.phone }}</td>
+                        <td>{{ person.city }}</td>
+                        <td>
+                            <i class="fa-solid fa-pen-to-square icon-crud ms-2" (click)="updatePerson(person);"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 mt-3">
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li *ngFor="let item of links; let i = index" class="page-item {{ item.active ? 'active' : ''}}">
+                        <button class="page-link" (click)="pagination(item.url)" [innerHTML]="item.label"></button>
+                        
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

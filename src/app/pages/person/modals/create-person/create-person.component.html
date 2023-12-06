@@ -1,0 +1,107 @@
+<!-- Modal -->
+<div class="modal bg-modal fade" 
+[ngClass]="[visible ? 'show' : '']"
+[ngStyle]="{ 'display': visible ? 'block': 'none' }"
+id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-light">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ title }}</h1>
+          <button type="button" class="btn-close bg-light" (click)="closeModal();"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formulario" (ngSubmit)="submit()">
+                <div class="row">
+                    <div class="col-12">
+                       
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label for="driverIdentificationNumber">Número de cédula</label>
+                                <input type="text" (blur)="onInputBlur($event, 'driver')" 
+                                maxlength="12"
+                                class="form-control" id="driverIdentificationNumber" formControlName="identification_number" />
+                                <div *ngIf="formulario.controls['identification_number'].invalid && (formulario.controls['identification_number'].dirty || formulario.controls['identification_number'].touched)">
+                                El número de cédula del conductor es obligatorio.
+                                </div>
+                            </div>
+                    
+                            <div class="col-md-6">
+                                <label for="driverFirstName">Primer Nombre</label>
+                                <input type="text" class="form-control" id="driverFirstName"
+                                maxlength="50"
+                                 formControlName="first_name" />
+                                <div *ngIf="formulario.controls['first_name'].invalid && (formulario.controls['first_name'].dirty || formulario.controls['first_name'].touched)">
+                                El primer nombre del conductor es obligatorio.
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                                <label for="driverSecondName">Segundo Nombre</label>
+                                <input type="text" class="form-control" id="driverSecondName" 
+                                maxlength="50"
+                                formControlName="middle_name" />
+                            </div>
+                        
+                            <div class="col-md-6">
+                                <label for="driverLastName">Apellidos</label>
+                                <input type="text" class="form-control" id="driverLastName" 
+                                maxlength="50"
+                                formControlName="last_name" />
+                                <div *ngIf="formulario.controls['last_name'].invalid && (formulario.controls['last_name'].dirty || formulario.controls['last_name'].touched)">
+                                Los apellidos del conductor son obligatorios.
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                                <label for="driverAddress">Dirección</label>
+                                <input type="text" class="form-control" id="driverAddress" 
+                                maxlength="100"
+                                formControlName="address" />
+                                <div *ngIf="formulario.controls['address'].invalid && (formulario.controls['address'].dirty || formulario.controls['address'].touched)">
+                                La dirección del conductor es obligatoria.
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                                <label for="driverPhone">Teléfono</label>
+                                <input type="text" class="form-control" id="driverPhone" 
+                                maxlength="12"
+                                formControlName="phone" />
+                                <div *ngIf="formulario.controls['phone'].invalid && (formulario.controls['phone'].dirty || formulario.controls['phone'].touched)">
+                                El teléfono del conductor es obligatorio.
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-6">
+                                <label for="driverCity">Ciudad</label>
+                                <select class="form-control" id="driverCity" formControlName="city">
+                                    <option value="">Seleccione la ciudad</option>
+                                    <option *ngFor="let item of cities" value="{{ item.city }}">{{ item.city }}</option>
+                                </select>
+                                <div *ngIf="formulario.controls['city'].invalid && (formulario.controls['city'].dirty || formulario.controls['city'].touched)">
+                                La ciudad del conductor es obligatoria.
+                                </div>
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" 
+                            *ngIf="action == 'Create' || action == 'Update'" [disabled]="formulario.invalid" 
+                            class="btn btn-primary btn-lg text-center">{{ action == 'Create' ? 'Guardar' : 'Actualizar' }}</button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+</div>

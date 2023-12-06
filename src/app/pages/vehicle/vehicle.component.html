@@ -1,0 +1,98 @@
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>Información de Vehículos</h2>
+            <button class="btn btn-primary" (click)="createNewVehicle();">
+                Crear Nuevo Vehículo
+            </button>
+            
+            <modal-create-vehicle
+            [visible]="modalCreateVehicle"
+            [title]="titleModal"
+            [vehicle]="vehicle"
+            [action]="actionButton"
+            (visibleChange)="modalCreateVehicleChange($event)"
+            ></modal-create-vehicle>
+
+            <modal-info-vehicle
+            [visible]="modalInfoVehicle"
+            [title]="titleModalInfo"
+            [vehicle]="vehicle"
+            (visibleChange)="modalInfoVehicle = $event"
+            ></modal-info-vehicle>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-3 mt-4">
+                    <label for="plate">Buscar por Placa</label>
+                    <input type="text" name="plate" id="plate" class="form-control" (input)="selectChange($event, 'plate')">
+                </div>
+                <div class="col-md-3 mt-4">
+                    <label for="vehicle_type">Tipo Vehículo</label>
+                    <select name="vehicle_type" id="vehicle_type" class="form-control" (input)="selectChange($event, 'vehicle_type')">
+                        <option value="">Todos</option>
+                        <option value="particular">Particular</option>
+                        <option value="publico">Publico</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mt-4">
+                    <label for="driver_names">Buscar por Nombre de conductor</label>
+                    <input type="text" name="driver_names" id="driver_names" class="form-control" (input)="selectChange($event, 'driver_names')">
+                </div>
+
+                <div class="col-md-3 mt-4">
+                    <label for="owner_names">Buscar por Nombre de propietario</label>
+                    <input type="text" name="owner_names" id="owner_names" class="form-control" (input)="selectChange($event, 'owner_names')">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Placa</th>
+                        <th>Color</th>
+                        <th>Marca</th>
+                        <th>Tipo de Vehículo</th>
+                        <th>Conductor</th>
+                        <th>Propietario</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vehicle of tableVehicles">
+                        <td>{{ vehicle.id }}</td>
+                        <td>{{ vehicle.plate }}</td>
+                        <td>{{ vehicle.color }}</td>
+                        <td>{{ vehicle.brand }}</td>
+                        <td>{{ vehicle.vehicle_type }}</td>
+                        <td>{{ vehicle.driver.first_name }} {{ vehicle.driver.middle_name }} {{ vehicle.driver.last_name }}</td>
+                        <td>{{ vehicle.owner.first_name }} {{ vehicle.owner.middle_name }} {{ vehicle.owner.last_name }}</td>
+                        <td>
+                            <i class="fa-solid fa-eye icon-crud" (click)="viewVehicle(vehicle);"></i>
+                            <i class="fa-solid fa-pen-to-square icon-crud ms-2" (click)="updateVehicle(vehicle);"></i>
+                            <i class="fa-solid fa-trash icon-crud ms-2" (click)="deleteVehicle(vehicle);"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-12 mt-3">
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li *ngFor="let item of links; let i = index" class="page-item {{ item.active ? 'active' : ''}}">
+                        <button class="page-link" (click)="pagination(item.url)" [innerHTML]="item.label"></button>
+                        
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

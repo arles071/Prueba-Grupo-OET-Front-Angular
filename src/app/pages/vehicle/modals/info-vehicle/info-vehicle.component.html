@@ -1,0 +1,130 @@
+<!-- Modal -->
+<div class="modal bg-modal fade" 
+[ngClass]="[visible ? 'show' : '']"
+[ngStyle]="{ 'display': visible ? 'block': 'none' }"
+id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-light">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ title }}</h1>
+          <button type="button" class="btn-close bg-light" (click)="closeModal();"></button>
+        </div>
+        <div class="modal-body" *ngIf="vehicle">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-light">
+                                Información del Vehículo
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="plate" class="me-4">Placa: </label>{{ vehicle.plate | uppercase }}
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="color" class="me-4">Color: </label>{{ vehicle.color | uppercase }}
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <label for="brand" class="me-4">Marca: </label>{{ vehicle.brand | uppercase }}
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <label for="vehicle_type" class="me-4">Tipo de vehículo: </label> {{ vehicle.vehicle_type | uppercase }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+
+                    <div class="card mt-3">
+                        <div class="card-header bg-dark text-light">
+                            Información del Conductor
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <label for="driverIdentificationNumber" class="me-4">Número de cédula del conductor: </label>{{ vehicle.driver.identification_number | uppercase }}
+                                </div>
+                        
+                                <div class="col-md-12">
+                                    <label for="driverFirstName" class="me-4">Primer Nombre del conductor: </label>{{ vehicle.driver.first_name | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverSecondName" class="me-4">Segundo Nombre del conductor: </label>{{ vehicle.driver.middle_name | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverLastName" class="me-4">Apellidos del conductor: </label>{{ vehicle.driver.last_name | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverAddress" class="me-4">Dirección del conductor: </label>{{ vehicle.driver.address | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverPhone" class="me-4">Teléfono del conductor: </label>{{ vehicle.driver.phone | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverCity" class="me-4">Ciudad del conductor: </label>{{ vehicle.driver.city | uppercase }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3">
+                        <div class="card-header bg-dark text-light">
+                            Información del propietario
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <label for="driverIdentificationNumber" class="me-4">Número de cédula del propietario: </label>{{ vehicle.owner.identification_number | uppercase }}
+                                </div>
+                        
+                                <div class="col-md-12">
+                                    <label for="driverFirstName" class="me-4">Primer Nombre del propietario: </label>{{ vehicle.owner.first_name | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverSecondName" class="me-4">Segundo Nombre del propietario: </label>{{ vehicle.owner.middle_name | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverLastName" class="me-4">Apellidos del propietario: </label>{{ vehicle.owner.last_name | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverAddress" class="me-4">Dirección del propietario: </label>{{ vehicle.owner.address | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverPhone" class="me-4">Teléfono del propietario: </label>{{ vehicle.owner.phone | uppercase }}
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="driverCity" class="me-4">Ciudad del propietario: </label>{{ vehicle.owner.city | uppercase }}
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    
+                </div>
+        </div>
+        
+      </div>
+    </div>
+</div>

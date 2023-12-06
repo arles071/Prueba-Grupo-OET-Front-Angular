@@ -1,0 +1,238 @@
+<!-- Modal -->
+<div class="modal bg-modal fade" 
+[ngClass]="[visible ? 'show' : '']"
+[ngStyle]="{ 'display': visible ? 'block': 'none' }"
+id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-light">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ title }}</h1>
+          <button type="button" class="btn-close bg-light" (click)="closeModal();"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formulario" (ngSubmit)="submit()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-light">
+                                Información del Vehículo
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="plate">Placa</label>
+                                        <input type="text" class="form-control" id="plate" formControlName="plate" maxlength="12"/>
+                                        <div 
+                                        *ngIf="formulario.controls['plate'].invalid && (formulario.controls['plate'].dirty || formulario.controls['plate'].touched)">
+                                            La placa es obligatoria.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="color">Color</label>
+                                        <input type="text" class="form-control" id="color" formControlName="color" maxlength="20"/>
+                                        <div *ngIf="formulario.controls['color'].invalid && (formulario.controls['color'].dirty || formulario.controls['color'].touched)">
+                                        El color es obligatorio.
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <label for="brand">Marca</label>
+                                        <input type="text" class="form-control" id="brand" formControlName="brand" maxlength="50"/>
+                                        <div *ngIf="formulario.controls['brand'].invalid && (formulario.controls['brand'].dirty || formulario.controls['brand'].touched)">
+                                        La marca es obligatoria.
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6">
+                                        <label for="vehicle_type">Tipo de vehículo</label>
+                                        <select class="form-control" id="vehicle_type" formControlName="vehicle_type">
+                                            <option value="">Seleccione...</option>
+                                            <option value="particular">Particular</option>
+                                            <option value="publico">Publico</option>
+                                        </select>
+                                        <div *ngIf="formulario.controls['vehicle_type'].invalid && (formulario.controls['vehicle_type'].dirty || formulario.controls['vehicle_type'].touched)">
+                                        El tipo de vehículo es obligatorio.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <div class="card-header bg-dark text-light">
+                                Información del Conductor
+                            </div>
+                            <div class="card-body">
+                                <div class="row" formGroupName="driver">
+
+                                    <div class="col-md-6">
+                                        <label for="driverIdentificationNumber">Número de cédula</label>
+                                        <input type="text" (blur)="onInputBlur($event, 'driver')" 
+                                        maxlength="12"
+                                        class="form-control" id="driverIdentificationNumber" formControlName="identification_number" />
+                                        <div *ngIf="formulario.controls['driver'].get('identification_number')?.invalid && (formulario.controls['driver'].get('identification_number')?.dirty || formulario.controls['driver'].get('identification_number')?.touched)">
+                                        El número de cédula del conductor es obligatorio.
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <label for="driverFirstName">Primer Nombre</label>
+                                        <input type="text" class="form-control" id="driverFirstName"
+                                        maxlength="50"
+                                         formControlName="first_name" />
+                                        <div *ngIf="formulario.controls['driver'].get('first_name')?.invalid && (formulario.controls['driver'].get('first_name')?.dirty || formulario.controls['driver'].get('first_name')?.touched)">
+                                        El primer nombre del conductor es obligatorio.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="driverSecondName">Segundo Nombre</label>
+                                        <input type="text" class="form-control" id="driverSecondName" 
+                                        maxlength="50"
+                                        formControlName="middle_name" />
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="driverLastName">Apellidos</label>
+                                        <input type="text" class="form-control" id="driverLastName" 
+                                        maxlength="50"
+                                        formControlName="last_name" />
+                                        <div *ngIf="formulario.controls['driver'].get('last_name')?.invalid && (formulario.controls['driver'].get('last_name')?.dirty || formulario.controls['driver'].get('last_name')?.touched)">
+                                        Los apellidos del conductor son obligatorios.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="driverAddress">Dirección</label>
+                                        <input type="text" class="form-control" id="driverAddress" 
+                                        maxlength="100"
+                                        formControlName="address" />
+                                        <div *ngIf="formulario.controls['driver'].get('address')?.invalid && (formulario.controls['driver'].get('address')?.dirty || formulario.controls['driver'].get('address')?.touched)">
+                                        La dirección del conductor es obligatoria.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="driverPhone">Teléfono</label>
+                                        <input type="text" class="form-control" id="driverPhone" 
+                                        maxlength="12"
+                                        formControlName="phone" />
+                                        <div *ngIf="formulario.controls['driver'].get('phone')?.invalid && (formulario.controls['driver'].get('phone')?.dirty || formulario.controls['driver'].get('phone')?.touched)">
+                                        El teléfono del conductor es obligatorio.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="driverCity">Ciudad</label>
+                                        <select class="form-control" id="driverCity" formControlName="city">
+                                            <option value="">Seleccione la ciudad</option>
+                                            <option *ngFor="let item of cities" value="{{ item.city }}">{{ item.city }}</option>
+                                        </select>
+                                        <div *ngIf="formulario.controls['driver'].get('city')?.invalid && (formulario.controls['driver'].get('city')?.dirty || formulario.controls['driver'].get('city')?.touched)">
+                                        La ciudad del conductor es obligatoria.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <div class="card-header bg-dark text-light">
+                                Información del propietario
+                            </div>
+                            <div class="card-body">
+                                <div class="row" formGroupName="owner">
+
+                                    <div class="col-md-6">
+                                        <label for="ownerIdentificationNumber">Número de cédula</label>
+                                        <input type="text" (blur)="onInputBlur($event, 'owner')" 
+                                        maxlength="12"
+                                        class="form-control" id="ownerIdentificationNumber" 
+                                        formControlName="identification_number" />
+                                        <div *ngIf="formulario.controls['owner'].get('identification_number')?.invalid && (formulario.controls['owner'].get('identification_number')?.dirty || formulario.controls['owner'].get('identification_number')?.touched)">
+                                            El número de cédula del propietario es obligatorio.
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <label for="ownerFirstName">Primer Nombre</label>
+                                        <input type="text" class="form-control" id="ownerFirstName"
+                                        maxlength="50" 
+                                        formControlName="first_name" />
+                                        <div *ngIf="formulario.controls['owner'].get('first_name')?.invalid && (formulario.controls['owner'].get('first_name')?.dirty || formulario.controls['owner'].get('first_name')?.touched)">
+                                            El primer nombre del propietario es obligatorio.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="ownerSecondName">Segundo Nombre</label>
+                                        <input type="text" class="form-control" id="ownerSecondName"
+                                        maxlength="50" 
+                                        ormControlName="middle_name" />
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="ownerLastName">Apellidos</label>
+                                        <input type="text" class="form-control" id="ownerLastName" 
+                                        maxlength="50"
+                                        formControlName="last_name" />
+                                        <div *ngIf="formulario.controls['owner'].get('last_name')?.invalid && (formulario.controls['owner'].get('last_name')?.dirty || formulario.controls['owner'].get('last_name')?.touched)">
+                                            Los apellidos del propietario son obligatorios.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="ownerAddress">Dirección</label>
+                                        <input type="text" class="form-control" id="ownerAddress" 
+                                        maxlength="100"
+                                        formControlName="address" />
+                                        <div *ngIf="formulario.controls['owner'].get('address')?.invalid && (formulario.controls['owner'].get('address')?.dirty || formulario.controls['owner'].get('address')?.touched)">
+                                            La dirección del propietario es obligatoria.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="ownerPhone">Teléfono</label>
+                                        <input type="text" class="form-control" id="ownerPhone" 
+                                        maxlength="12"
+                                        formControlName="phone" />
+                                        <div *ngIf="formulario.controls['owner'].get('phone')?.invalid && (formulario.controls['owner'].get('phone')?.dirty || formulario.controls['owner'].get('phone')?.touched)">
+                                            El teléfono del propietario es obligatorio.
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label for="ownerCity">Ciudad</label>
+                                        <select class="form-control" id="ownerCity" formControlName="city">
+                                            <option value="">Seleccione la ciudad</option>
+                                            <option *ngFor="let item of cities" value="{{ item.city }}">{{ item.city }}</option>
+                                        </select>
+                                        <div *ngIf="formulario.controls['owner'].get('city')?.invalid && (formulario.controls['owner'].get('city')?.dirty || formulario.controls['owner'].get('city')?.touched)">
+                                            La ciudad del propietario es obligatoria.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" 
+                            *ngIf="action == 'Create' || action == 'Update'" [disabled]="formulario.invalid" 
+                            class="btn btn-primary btn-lg text-center">{{ action == 'Create' ? 'Guardar' : 'Actualizar' }}</button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+</div>
